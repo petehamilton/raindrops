@@ -1,13 +1,11 @@
 # -*- encoding: binary -*-
-require 'olddoc'
-extend Olddoc::Gemspec
 
 Gem::Specification.new do |s|
   s.name = %q{raindrops}
   s.version = '0.17.1'
 
   s.authors = ["raindrops hackers"]
-  s.description = readme_description
+  s.description = ''
   s.email = %q{raindrops@bogomips.org}
   s.extensions = %w(ext/raindrops/extconf.rb)
   gem.files = Dir['Rakefile', '{lib,test}/**/*', 'README*', 'LICENSE*'] & `git ls-files -z`.split("\0")
