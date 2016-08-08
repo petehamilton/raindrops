@@ -1,5 +1,4 @@
 # -*- encoding: binary -*-
-ENV["VERSION"] or abort "VERSION= must be specified"
 manifest = File.readlines('.manifest').map! { |x| x.chomp! }
 test_files = manifest.grep(%r{\Atest/test_.*\.rb\z})
 require 'olddoc'
@@ -8,7 +7,7 @@ name, summary, title = readme_metadata
 
 Gem::Specification.new do |s|
   s.name = %q{raindrops}
-  s.version = ENV["VERSION"].dup
+  s.version = '0.17.1'
 
   s.authors = ["raindrops hackers"]
   s.description = readme_description
