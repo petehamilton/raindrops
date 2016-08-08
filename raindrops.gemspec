@@ -1,9 +1,6 @@
 # -*- encoding: binary -*-
-manifest = File.readlines('.manifest').map! { |x| x.chomp! }
-test_files = manifest.grep(%r{\Atest/test_.*\.rb\z})
 require 'olddoc'
 extend Olddoc::Gemspec
-name, summary, title = readme_metadata
 
 Gem::Specification.new do |s|
   s.name = %q{raindrops}
@@ -13,11 +10,9 @@ Gem::Specification.new do |s|
   s.description = readme_description
   s.email = %q{raindrops@bogomips.org}
   s.extensions = %w(ext/raindrops/extconf.rb)
-  s.extra_rdoc_files = extra_rdoc_files(manifest)
-  s.files = manifest
+  gem.files = Dir['Rakefile', '{lib,test}/**/*', 'README*', 'LICENSE*'] & `git ls-files -z`.split("\0")
   s.homepage = Olddoc.config['rdoc_url']
   s.summary = summary
-  s.test_files = test_files
   s.add_development_dependency('aggregate', '~> 0.2')
   s.add_development_dependency('test-unit', '~> 3.0')
   s.add_development_dependency('io-extra', [ '~> 1.2', '>= 1.2.3'])
