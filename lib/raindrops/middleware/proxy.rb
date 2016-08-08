@@ -27,9 +27,9 @@ class Raindrops::Middleware::Proxy
 
   # Rack servers use +respond_to?+ to check for the presence of +close+
   # and +to_path+ methods.
-  def respond_to?(m)
+  def respond_to?(m, priv = false)
     m = m.to_sym
-    :close == m || @body.respond_to?(m)
+    :close == m || @body.respond_to?(m, priv)
   end
 
   # Avoid breaking users of non-standard extensions (e.g. #body)
